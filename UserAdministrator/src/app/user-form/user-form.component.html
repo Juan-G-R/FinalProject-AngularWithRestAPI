@@ -1,0 +1,39 @@
+<div class="py-5">
+    <h1 class="text-center fs-1">{{titleText}}</h1>
+</div>
+<div class="form-box">
+
+    <section>
+        <mat-form-field>
+
+            <input matInput placeholder={{namePlaceholder}} [(ngModel)]="name" required>
+
+        </mat-form-field>
+    </section>
+
+    <section> 
+        <mat-form-field>
+
+            <input matInput placeholder={{lastNamePlaceholder}} [(ngModel)]="first_name" required>
+
+        </mat-form-field></section>
+
+    <section>
+        <mat-form-field>
+
+            <input matInput placeholder={{emailPlaceholder}} [(ngModel)]="email" required>
+
+        </mat-form-field>
+    </section>
+
+    <section>
+        <mat-form-field>
+
+            <input matInput placeholder={{typeUserPlaceholder}} [(ngModel)]="type_user" required>
+
+        </mat-form-field>
+    </section>
+
+
+    <button mat-raised-button (click)="addUser()">Add new Type User</button>
+</div>

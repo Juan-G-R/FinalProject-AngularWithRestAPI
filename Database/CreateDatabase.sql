@@ -1,0 +1,20 @@
+CREATE DATABASE IF NOT EXISTS UsersDB;
+use UsersDB;
+ 
+CREATE TABLE IF NOT EXISTS `TypeUsers` (
+    id INT NOT NULL AUTO_INCREMENT,
+	type_user VARCHAR(100) NOT NULL,
+	PRIMARY KEY(id)
+);
+ 
+ CREATE TABLE IF NOT EXISTS `Users` (
+    id INT NOT NULL AUTO_INCREMENT,
+	first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+	email VARCHAR(100) NOT NULL,
+    type_user INT,
+    PRIMARY KEY(id),
+	FOREIGN KEY (type_user) REFERENCES TypeUsers(id) ON DELETE CASCADE
+ );
+ 
+

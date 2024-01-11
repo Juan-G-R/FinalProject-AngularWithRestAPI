@@ -1,0 +1,36 @@
+
+<div class="py-5">
+    <h1 class="text-center fs-1">
+        All Type Users List
+    </h1>
+</div>
+<div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort (matSortChange)="announceChange($event)">
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> id </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="type_user">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Type User </th>
+            <td mat-cell *matCellDef="let element"> {{element.type_user}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Options" >
+            <th mat-header-cell *matHeaderCellDef> Options </th>
+            <td mat-cell *matCellDef="let element"> 
+                <button type="button" class="btn btn-secondary" (click)="navigateTo(element.id, element.type_user)">
+                    <mat-icon aria-hidden="false" aria-label="Edit" fontIcon="edit"></mat-icon>
+                </button>
+                <button type="button" class="btn btn-danger" (click)="deleteTypeUser(element.id)">
+                    <mat-icon aria-hidden="false" aria-label="Delete" fontIcon="delete"></mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+</div>

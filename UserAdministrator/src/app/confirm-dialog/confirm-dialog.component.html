@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Confirmation</h1>
+<div mat-dialog-content>
+    <div [innerHTML]="data.message"></div>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button [innerHTML]="data.option1"  (click)="confirmed()"></button>
+    <button mat-raised-button [innerHTML]="data.option2" *ngIf="this.isButtonVisible" (click)="closeDialog()" cdkFocusInitial></button>
+</div>

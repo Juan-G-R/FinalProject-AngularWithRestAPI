@@ -8,6 +8,10 @@ import { UserFormComponent } from './user-form/user-form.component';
 
 const routes: Routes = [
   {
+    path:"",
+    component: ListUsersComponent
+  },
+  {
     path:"users/all",
     component: ListUsersComponent
   },

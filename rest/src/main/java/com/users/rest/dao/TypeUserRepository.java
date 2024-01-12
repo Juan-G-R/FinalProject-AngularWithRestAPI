@@ -10,7 +10,7 @@ import com.users.rest.entity.User;
 
 public interface TypeUserRepository extends JpaRepository<TypeUser, Integer>{
 
-	@Query(value = "SELECT typeusers.id FROM typeusers WHERE typeusers.type_user = ? ", nativeQuery = true)
+	@Query(value = "SELECT TypeUsers.id FROM TypeUsers WHERE TypeUsers.type_user = ? ", nativeQuery = true)
 	List<Integer> findByName(String typeUserName);
 	
 	TypeUser findBytypeUser(String typeUser);

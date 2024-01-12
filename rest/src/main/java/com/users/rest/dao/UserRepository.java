@@ -35,7 +35,7 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 			+ "WHERE id = ?5" , nativeQuery = true)
 	void updateParsedUser(String name, String last_name, String email, int type_user, int id); //Update the user to the db with the right format
 	
-	@Query(value = "SELECT typeusers.id FROM typeusers WHERE typeusers.type_user = ? ;", nativeQuery = true)
+	@Query(value = "SELECT TypeUsers.id FROM TypeUsers WHERE TypeUsers.type_user = ? ;", nativeQuery = true)
 	List<Integer> getTypeUserId(String type_user); //Pass from type_user name to de id to send it to the db
 
 }	

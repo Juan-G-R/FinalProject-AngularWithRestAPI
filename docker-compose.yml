@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  spring-app:
+    build:
+      context: /rest
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/UsersDB
+      SPRING_DATASOURCE_USERNAME: userAdministrator
+      SPRING_DATASOURCE_PASSWORD: userAdministrator
+
+      
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: userAdministrator
+      MYSQL_DATABASE: UsersDB
+      MYSQL_USER: userAdministrator
+      MYSQL_PASSWORD: userAdministrator
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./Database:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 30s
+      retries: 3
+
+  angular-app:
+      build:
+        context: ./UserAdministrator
+        dockerfile: ./Dockerfile
+      ports:
+        - "4200:4200"
+      volumes:
+        - .:/app
+
+    
